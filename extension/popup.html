@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Claude Deck Link Capture</title>
+    <style>
+      :root { color-scheme: light dark; --fg: #141821; --fg2: #4b5565; --line: #e3e6eb; --accent: #4a64d4; --ok: #23925f; --danger: #c93f3f; --bg: #fff; }
+      @media (prefers-color-scheme: dark) { :root { --fg: #e7eaf0; --fg2: #a4adbd; --line: #2b313d; --accent: #7d95f2; --ok: #43bf87; --danger: #ef6f6f; --bg: #181b22; } }
+      body { margin: 0; width: 320px; font: 13px -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif; color: var(--fg); background: var(--bg); }
+      header { display: flex; align-items: center; gap: 8px; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+      header img { width: 22px; height: 22px; border-radius: 6px; }
+      header b { font-size: 14px; }
+      main { padding: 12px 14px; display: grid; gap: 10px; }
+      .status { font-size: 12.5px; }
+      .ok { color: var(--ok); } .err { color: var(--danger); }
+      input[type=text] { width: 100%; box-sizing: border-box; height: 30px; border-radius: 8px; border: 1px solid var(--line); padding: 0 8px; font: 12px ui-monospace, 'SF Mono', Menlo, monospace; background: transparent; color: var(--fg); }
+      button { height: 30px; border-radius: 8px; border: 1px solid var(--line); background: transparent; color: var(--fg); font-weight: 600; cursor: pointer; }
+      button.primary { background: var(--accent); border-color: var(--accent); color: white; }
+      label { display: flex; gap: 8px; align-items: center; font-size: 12.5px; }
+      small { color: var(--fg2); line-height: 1.45; }
+      .row { display: flex; gap: 8px; } .row > * { flex: 1; }
+    </style>
+  </head>
+  <body>
+    <header><img src="icons/icon48.png" alt="" /><b>Claude Deck Link Capture</b></header>
+    <main>
+      <div id="status" class="status">Checking…</div>
+      <div id="pairBox" style="display:grid;gap:8px">
+        <input id="code" type="text" placeholder="CDECK-47821-ABCDEF1234" spellcheck="false" />
+        <button id="pair" class="primary">Pair this Chrome profile</button>
+        <small>Get a pairing code in Claude Deck → Settings → Chrome extension, for the account that uses this Chrome profile.</small>
+      </div>
+      <label><input id="enabled" type="checkbox" /> Capture conversation links</label>
+      <label><input id="titles" type="checkbox" /> Include tab titles</label>
+      <div class="row"><button id="unpair">Unpair</button></div>
+      <small>Only claude.ai/code session URLs (and optionally tab titles) are sent to Claude Deck on this Mac (127.0.0.1). Page content, cookies and tokens are never accessed.</small>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

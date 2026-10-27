@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Claude Deck Link Capture",
+  "version": "0.1.0",
+  "description": "Optional companion for Claude Deck: remembers the exact claude.ai/code/session_… URL of conversations you open in this Chrome profile. Never reads page content.",
+  "minimum_chrome_version": "116",
+  "permissions": ["storage"],
+  "host_permissions": ["https://claude.ai/code/*", "http://127.0.0.1/*"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_popup": "popup.html", "default_title": "Claude Deck Link Capture" },
+  "icons": { "16": "icons/icon16.png", "48": "icons/icon48.png", "128": "icons/icon128.png" }
+}

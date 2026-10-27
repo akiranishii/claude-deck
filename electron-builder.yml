@@ -1,0 +1,33 @@
+appId: com.claudedeck.app
+productName: Claude Deck
+copyright: Copyright © 2026 Akira Nishii
+directories:
+  buildResources: build
+  output: dist
+files:
+  - out/**
+  - package.json
+extraResources:
+  - from: resources/tray
+    to: tray
+  - from: resources/remote
+    to: remote
+asar: true
+npmRebuild: false
+mac:
+  category: public.app-category.developer-tools
+  icon: build/icon.png
+  darkModeSupport: true
+  # Local, unsigned build. An ad-hoc signature is applied after packing (see build/adhoc-sign.cjs).
+  identity: null
+  hardenedRuntime: false
+  target:
+    - target: dmg
+      arch: [arm64]
+    - target: zip
+      arch: [arm64]
+  extendInfo:
+    NSAppleEventsUsageDescription: Claude Deck reads the URL of Chrome's front tab when you click “Grab from Chrome”, and can open iTerm2 windows for SSH sessions.
+afterPack: build/adhoc-sign.cjs
+dmg:
+  title: Claude Deck
